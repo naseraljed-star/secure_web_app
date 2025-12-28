@@ -1,0 +1,40 @@
+<!DOCTYPE html>                        <!-- basic HTML page -->
+<html>
+<head>
+    <title>XSS Demo</title>            <!-- page title -->
+</head>
+
+<body>
+
+<h2>XSS Demonstration</h2>             <!-- page heading -->
+
+<form method="POST">                   <!-- send comment with POST -->
+    <label>Enter a comment:</label><br>
+    <input type="text" name="comment" style="width: 400px;"><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<hr>                                   <!-- simple separator -->
+
+{% if raw_comment %}                   <!-- show unsafe output -->
+    <h3>1) UNSAFE OUTPUT</h3>
+    <p>This is how the comment looks if printed directly:</p>
+    <div style="border:1px solid #000; padding:5px;">
+        {{ raw_comment|safe }}         <!-- raw / unsafe -->
+    </div>
+{% endif %}
+
+{% if safe_comment %}                  <!-- show safe output -->
+    <h3>2) SAFE OUTPUT</h3>
+    <p>This is the same comment with escaping:</p>
+    <div style="border:1px solid #000; padding:5px;">
+        {{ safe_comment }}             <!-- escaped / safe -->
+    </div>
+{% endif %}
+
+<p>
+    <a href="/">Back to home</a>       <!-- return to home page -->
+</p>
+
+</body>
+</html>

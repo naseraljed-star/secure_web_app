@@ -1,0 +1,30 @@
+<!DOCTYPE html>                      <!-- basic HTML structure -->
+<html>
+<head>
+    <title>Input Validation Demo</title>  <!-- page title -->
+</head>
+
+<body>
+
+<h2>Input Validation Test</h2>       <!-- page heading -->
+
+<form method="POST">                 <!-- form sends data using POST -->
+    <label>Enter some text:</label><br>
+    <input type="text" name="user_input"><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+{% if message %}                     <!-- show message if XSS was detected -->
+    <p>{{ message }}</p>
+{% endif %}
+
+{% if cleaned %}                     <!-- if the input was allowed, show it -->
+    <p>Cleaned input: {{ cleaned }}</p>
+{% endif %}
+
+<p>
+    <a href="/">Back to home</a>     <!-- link to go back to main page -->
+</p>
+
+</body>
+</html>
