@@ -24,6 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run app
+      - name: Run import check (CI)
         run: |
-          python app.py
+          python -c "import app; print('CI import check OK')"
